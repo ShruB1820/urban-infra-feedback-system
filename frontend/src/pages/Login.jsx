@@ -8,18 +8,27 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axiosInstance.post('/auth/login', formData);
-      login(response.data);               // Save user in context/localStorage
-      setAuthToken(response.data.token);  // Set token for future requests
-      navigate('/tasks');
-    } catch (error) {
-      alert(error.response?.data?.message || 'Login failed. Please try again.');
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axiosInstance.post('/auth/login', formData);
+    console.log("Login response:", response.data); // 👈 debug here
 
+    login(response.data);
+    setAuthToken(response.data.token);
+
+    // Adjust depending on backend response structure
+    const email = response.data.user?.email || response.data.email;
+
+    if (email?.toLowerCase() === 'admin@gmail.com') {
+      navigate('/admin');
+    } else {
+      navigate('/tasks');
+    }
+  } catch (error) {
+    alert(error.response?.data?.message || 'Login failed. Please try again.');
+  }
+};
   return (
     <div className="max-w-md mx-auto mt-20">
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded">
