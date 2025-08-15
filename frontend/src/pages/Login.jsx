@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axiosInstance from '../axiosConfig';
+import axiosInstance, { setAuthToken } from '../axiosConfig';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -11,11 +11,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.post('/api/auth/login', formData);
-      login(response.data);
+      const response = await axiosInstance.post('/auth/login', formData);
+      login(response.data);               // Save user in context/localStorage
+      setAuthToken(response.data.token);  // Set token for future requests
       navigate('/tasks');
     } catch (error) {
-      alert('Login failed. Please try again.');
+      alert(error.response?.data?.message || 'Login failed. Please try again.');
     }
   };
 
@@ -29,6 +30,7 @@ const Login = () => {
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           className="w-full mb-4 p-2 border rounded"
+          required
         />
         <input
           type="password"
@@ -36,6 +38,7 @@ const Login = () => {
           value={formData.password}
           onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           className="w-full mb-4 p-2 border rounded"
+          required
         />
         <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded">
           Login
