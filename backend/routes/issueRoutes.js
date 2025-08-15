@@ -12,5 +12,7 @@ router.get('/:id', ctrl.getIssue);
 router.put('/:id', upload.single('photo'), ctrl.updateIssue);
 router.delete('/:id', ctrl.deleteIssue);
 router.patch('/:id/status', ctrl.updateStatus);
+router.get('/', ctrl.getAllIssues);
+
 
 module.exports = router;
