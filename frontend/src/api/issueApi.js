@@ -6,3 +6,8 @@ export const createIssue = (formData) => API.post('/issues', formData);
 export const updateIssue = (id, formData) => API.put(`/issues/${id}`, formData);
 export const deleteIssue = (id) => API.delete(`/issues/${id}`);
 export const updateStatus = (id, status) => API.patch(`/issues/${id}/status`, { status });
+export const getAllIssues = () => API.get('/issues/all'); // New endpoint for fetching all issues
+
+export const getAllIssues1 = () => API.get('/admin/issues1');
+export const updateIssueStatusAdmin = (id, status) =>
+  API.patch(`/admin/issues1/${id}/status`, { status });

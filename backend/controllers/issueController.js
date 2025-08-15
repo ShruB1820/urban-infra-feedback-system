@@ -58,12 +58,24 @@ exports.deleteIssue = async (req, res) => {
         res.json({ ok: true });
     } catch (e) { res.status(500).json({ message: e.message }); }
 };
-
 exports.updateStatus = async (req, res) => {
-    try {
-        const { status } = req.body;
-        const data = await Issue.findByIdAndUpdate(req.params.id, { status }, { new: true });
-        if (!data) return res.status(404).json({ message: 'Not found' });
-        res.json(data);
-    } catch (e) { res.status(500).json({ message: e.message }); }
+  try {
+    const issue = await Issue.findById(req.params.id);
+    if (!issue) return res.status(404).json({ message: 'Issue not found' });
+
+    const { status } = req.body;
+    issue.status = status;
+    await issue.save();
+    res.json(issue);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+exports.getAllIssues = async (req, res) => {
+  try {
+    const issues = await Issue.find().sort('-createdAt'); // newest first
+    res.json(issues);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };

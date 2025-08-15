@@ -6,7 +6,7 @@ const connectDB = require('./config/db');
 
 const authRoutes = require('./routes/authRoutes');
 const issueRoutes = require('./routes/issueRoutes');
-
+const adminRoutes = require('./routes/adminRoutes');
 dotenv.config();
 
 const app = express();
@@ -14,9 +14,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 app.use('/api/auth', authRoutes);
 app.use('/api/issues', issueRoutes);
+app.use('/api/admin', adminRoutes);
+
 
 app.get('/health', (_, res) => res.json({ ok: true }));
 
