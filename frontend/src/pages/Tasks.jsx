@@ -1,38 +1,15 @@
-import { useState, useEffect } from 'react';
-import axiosInstance from '../axiosConfig';
-import TaskForm from '../components/TaskForm';
-import TaskList from '../components/TaskList';
-import { useAuth } from '../context/AuthContext';
+import { useState } from 'react';
+import IssueForm from '../components/IssueForm.jsx';
+import IssueList from '../components/IssueList.jsx';
 
 const Tasks = () => {
-  const { user } = useAuth();
-  const [tasks, setTasks] = useState([]);
-  const [editingTask, setEditingTask] = useState(null);
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const response = await axiosInstance.get('/api/tasks', {
-          headers: { Authorization: `Bearer ${user.token}` },
-        });
-        setTasks(response.data);
-      } catch (error) {
-        alert('Failed to fetch tasks.');
-      }
-    };
-
-    fetchTasks();
-  }, [user]);
+  const [refresh, setRefresh] = useState(false);
 
   return (
-    <div className="container mx-auto p-6">
-      <TaskForm
-        tasks={tasks}
-        setTasks={setTasks}
-        editingTask={editingTask}
-        setEditingTask={setEditingTask}
-      />
-      <TaskList tasks={tasks} setTasks={setTasks} setEditingTask={setEditingTask} />
+    <div className="p-4 space-y-6">
+      <h1 className="text-2xl font-bold mb-4">Issue Reporting</h1>
+      <IssueForm onSuccess={() => setRefresh(r => !r)} />
+      <IssueList key={refresh} />
     </div>
   );
 };
