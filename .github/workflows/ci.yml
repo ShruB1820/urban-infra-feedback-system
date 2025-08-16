@@ -23,16 +23,22 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             set -e
 
-            # Create folder if it doesn't exist
-            if [ ! -d "~/urban-infra-feedback-system" ]; then
-              git clone https://github.com/ShruB1820/urban-infra-feedback-system.git ~/urban-infra-feedback-system
+            APP_DIR="/home/${{ secrets.EC2_USER }}/urban-infra-feedback-system"
+
+            # Clone if folder doesn't exist
+            if [ ! -d "$APP_DIR" ]; then
+              git clone https://github.com/ShruB1820/urban-infra-feedback-system.git "$APP_DIR"
             fi
 
-            cd ~/urban-infra-feedback-system
+            cd "$APP_DIR"
+
+            # Stash local changes to avoid conflicts
+            git stash save "auto-stash-before-deploy" || true
 
             git checkout main
             git pull origin main
 
+            # Backend
             cd backend
             npm install
 
