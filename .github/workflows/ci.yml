@@ -24,16 +24,15 @@ jobs:
             set -e
 
             # Create folder if it doesn't exist
-            if [ -d "~/urban-infra-feedback-system" ]; then
-              cd ~/urban-infra-feedback-system
-              git fetch --all
-              git reset --hard origin/main  # Reset to latest main
-            else
+            if [ ! -d "~/urban-infra-feedback-system" ]; then
               git clone https://github.com/ShruB1820/urban-infra-feedback-system.git ~/urban-infra-feedback-system
-              cd ~/urban-infra-feedback-system
             fi
 
-            # Backend
+            cd ~/urban-infra-feedback-system
+
+            git checkout main
+            git pull origin main
+
             cd backend
             npm install
 
