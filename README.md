@@ -1,94 +1,109 @@
 
-**Assessment 1 (Total Marks **20**)**
+# Task Manager
 
-Assignment: **Software requirements analysis and design (**Full-Stack CRUD Application Development with DevOps Practices**)**
-
-
----
-
-**Objective**
-
-You have been provided with a starter project that includes user authentication using Node.js, React.js, and MongoDB. Your task is to extend this application by implementing CRUD (Create, Read, Update, Delete) operations of different featuresfor a real-world application of your choice, while following industry best practices such as: 
-
-* **Project Management with JIRA**
-* **Requirement Diagram**, **Block Definition Diagram (**BDD), Parametric Diagram using**SysML**
-* **Version Control using GitHub**
-* **CI/CD Integration for Automated Deployment**
+**Version:** 1.0.0  
+**Description:** Complete MERN Task Manager Application  
+**Author:** Shruti
+**License:** ISC
 
 ---
 
-**GitHub link of the starter project: **[https://github.com/rajuiit/sdlapps](https://github.com/rajuiit/sdlapps)
+## Table of Contents
+
+- [Overview](#overview)  
+- [Features](#features)  
+- [Tech Stack](#tech-stack)  
+- [Installation](#installation)  
+- [Scripts](#scripts)  
+- [Usage](#usage)  
+- [Contributing](#contributing)  
+- [License](#license)  
 
 ---
 
-**Requirement**
+## Overview
 
-1. **Choose a Real-World Application**
-
-We will send you an email to choose a Real-World project. If you face any difficulties in choosing your project, please contact your tutor.
-
-2. **Project Design with SysML and Project Management with JIRA**
-
-* Draw a requirements diagram, Block Definition Diagram (BDD), and Parametric Diagram based on your project (Connect all functional features).
-* Create a JIRA project and define:
-  * Epic
-  * User Stories (features required in your app)
-  * Child issues or Subtasks (breaking down development work)
-  * Sprint Implementation (organizing work into milestones)
-* Provide your JIRA board URL in the project README.
-
-**3. Backend Development (Node.js + Express + MongoDB)**
-
-* Set up and configure the MongoDB database connection.
-* Implement various backend functions for handling application data.Ensure that all functions are compatible with an Application Programming Interface (API) structure(Follow existing patterns used in the Task Manager App where applicable).
-* Implement CRUD operations forcreating, reading, updating, and deleting records for each functionality.
-
-4. **Frontend Development (React.js)**
-
-* Create a user-friendly interface to interact with your API endpoint (Follow task manager app).
-* Implement different forms for adding, updating, and deleting records.
-* Display data using tables, cards, or lists (Follow how we showed data in task manager app, try to implement better visualization for the frontend.)
-
-**5. Authentication & Authorization** (Prerequisite Task)
-
-* Ensure only authenticated users can access and perform CRUD operations. (Already developed in your project)
-* Use JWT (JSON Web Tokens) for user authentication (Use the task manager one from .env file).
-
-**6. GitHub Version Control & Branching Strategy**
-
-* Use GitHub for version control and maintain:
-* main branch (stable production-ready code)
-* Feature branches for each new feature
-* Follow proper commit messages and pull request (PR) for code reviews.
-
-**7. CI/CD Pipeline Setup**
-
-* Implement a CI/CD pipeline using GitHub Actions to:
-* Automatically run tests on every commit/pull request (Optional).
-* Deploy the backend to AWS. (Use the QUT provided EC2 instance)
-* Deploy the frontend to AWS.
-* Document your CI/CD workflow in the README.
+Aussie Reports is a full-stack MERN (MongoDB, Express, React, Node.js) application designed to manage tasks efficiently. It allows users to create, update, and track tasks in a user-friendly interface.
 
 ---
 
-**Submission Requirements**
+## Features
 
-**A report **contains** the following (Provide screenshots as evidence for each implemented task. **The screenshot should **contain** your username** from JIRA, GITHUB, and AWS**):
-
-* **JIRA Project **Management**(Provide screenshots in the **report o**f at least two epics**, **including user story, sub**t**a**sks**. **Please **don’t** provide **the **U**ser Authentication** epic**.**Provide your JIRA Board URL in the report and README file as well.**Through the JIRA Board, we will systematically review the completeness of the project features, organised under Epics, User Stories, and Sub-tasks.**
-* Requirement diagram, Block Definition Diagram (BDD), Parametric Diagram (Using project features).
-* **GitHub Repository (backend/ and frontend/)** link. We will **review** your code implementation, which you followed from the task description. We will also **review** your commits, main branch, feature branches, and pull requests. **(**Please note that the authorisation** (Log In, Registration)** is the prerequisite for backend development.**)**
-* CI/CD pipeline details step by step screenshot.
-* README.md with:
-* Project setup instructions.
-* Public URL of your project.
-* Provide a project-specific username and password if we need to access your dashboard.
+- User authentication and authorization  
+- Create, update, delete, and view  Reports  
+- Interactive task dashboard  
+- React-based frontend with Leaflet map integration  
+- RESTful API backend with Node.js and Express  
+- MongoDB for data storage  
 
 ---
 
-**Assessment Criteria:**
+## Tech Stack
 
-* Clarity and completeness of Jira board and SysML models.
-* Adherence to Git best practices and practical contributions.
-* Successful implementation, deploymentand CI/CD pipeline.
-* Problem-solving skills and the ability to go beyond basic requirements.
+- **Frontend:** React, React-Leaflet, Leaflet, Axios  
+- **Backend:** Node.js, Express  
+- **Database:** MongoDB  
+- **Dev Tools:** AWS, Github Actions 
+
+---
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ShruB1820/urban-infra-feedback-system.git
+   cd urban-infra-feedback-system
+
+	2.	Install dependencies:
+
+npm run install-all
+
+
+	3.	Set up environment variables:
+	•	Create a .env file in backend/
+	•	Add your MongoDB URI, JWT secret, and any other required keys.
+
+⸻
+
+Scripts
+
+Script	Description
+npm run install-all	Installs dependencies in root, backend, and frontend
+npm start	Starts both backend (production) and frontend concurrently
+npm run dev	Starts backend in dev mode with frontend concurrently
+
+
+⸻
+
+Usage
+	•	Start in development:
+
+npm run dev
+
+
+	•	Start in production:
+
+npm start
+
+
+	•	Access the frontend via your browser at http://localhost:3000
+	•	Backend API runs at http://localhost:5000 (or your configured port)
+
+⸻
+
+Contributing
+	1.	Fork the repository
+	2.	Create your feature branch (git checkout -b feature/your-feature)
+	3.	Commit your changes (git commit -m 'Add some feature')
+	4.	Push to the branch (git push origin feature/your-feature)
+	5.	Open a Pull Request
+
+⸻
+
+License
+
+This project is licensed under the ISC License.
+
+⸻
+
+
