@@ -26,16 +26,13 @@ jobs:
             cd ~/urban-infra-feedback-system || mkdir -p ~/urban-infra-feedback-system && cd ~/urban-infra-feedback-system
             git pull || git clone https://github.com/ShruB1820/urban-infra-feedback-system.git .
             
-            # Backend
             cd backend
             npm install
             
-            # Frontend
             cd ../frontend
             npm install
             npm run build
             
-            # Restart backend
             cd ../backend
             pm2 restart taskmanager || pm2 start server.js --name taskmanager
             pm2 save
