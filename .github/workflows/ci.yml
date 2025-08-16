@@ -24,7 +24,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
             set -e
             cd ~/urban-infra-feedback-system || mkdir -p ~/urban-infra-feedback-system && cd ~/urban-infra-feedback-system
-            git pull || git clone https://github.com/<your-username>/<your-repo>.git .
+            git pull || git clone https://github.com/ShruB1820/urban-infra-feedback-system.git .
             
             # Backend
             cd backend
