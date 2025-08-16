@@ -25,7 +25,7 @@ const MapPicker = ({ latLng, setLatLng }) => {
   return (
     <div className="h-80 w-full rounded overflow-hidden border">
       <MapContainer
-        center={[latLng.lat || 20, latLng.lng || 77]}
+        center={[latLng.lat || -25.2744, latLng.lng || 133.7751]}
         zoom={13}
         style={{ height: '100%', width: '100%' }}
       >
