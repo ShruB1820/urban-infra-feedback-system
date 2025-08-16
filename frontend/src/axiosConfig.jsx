@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://localhost:5001/api',
+  baseURL: 'http://43.220.4.240/api', // use EC2 public IP or domain
 });
 
 export const setAuthToken = token => {

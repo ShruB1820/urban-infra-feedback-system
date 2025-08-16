@@ -1,28 +1,42 @@
-name: CI
+name: Deploy to EC2
 
 on:
-    push:
-        branches:
-            - main
-    pull_request:
-        branches:
-            - main
+  push:
+    branches:
+      - main
+
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-        - name: Checkout code
-            uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-        - name: Set up Node.js
-            uses: actions/setup-node@v2
-            with:
-                node-version: '14'
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.EC2_KEY }}
 
-        - name: Install dependencies
-            run: npm install
-
-        - name: Run tests
-            run: npm test
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+            set -e
+            cd ~/urban-infra-feedback-system || mkdir -p ~/urban-infra-feedback-system && cd ~/urban-infra-feedback-system
+            git pull || git clone https://github.com/<your-username>/<your-repo>.git .
+            
+            # Backend
+            cd backend
+            npm install
+            
+            # Frontend
+            cd ../frontend
+            npm install
+            npm run build
+            
+            # Restart backend
+            cd ../backend
+            pm2 restart taskmanager || pm2 start server.js --name taskmanager
+            pm2 save
+          EOF
