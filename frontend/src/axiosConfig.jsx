@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'http://43.220.4.240/api', // use EC2 public IP or domain
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5001/api",
 });
 
 export const setAuthToken = token => {

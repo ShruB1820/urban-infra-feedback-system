@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from '../assets/BC_logo.png';
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -12,7 +13,9 @@ const Navbar = () => {
 
   return (
     <nav className="bg-blue-600 text-white p-4 flex justify-between items-center">
-      <Link to="/" className="text-2xl font-bold">Aussie Reports</Link>
+      <Link to="/" className="flex items-center gap-2" aria-label="Brisbane Connect">
+        <img src={Logo} alt="Brisbane Connect" className="h-8 w-auto" />
+      </Link>
       <div>
         {user ? (
           <>
