@@ -7,10 +7,8 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Make Home look like the Login header
   const isHome = location.pathname === "/home";
-  const solid = !isHome; // solid on other pages
-
+  const solid = !isHome; 
   const brandText =
     (solid ? "text-white" : "text-gray-900") + " hidden sm:block text-lg md:text-xl font-semibold";
 

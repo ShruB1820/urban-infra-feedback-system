@@ -123,7 +123,7 @@ export default function Login() {
           <section className="lg:col-span-3">
             <div className="relative overflow-hidden rounded-3xl shadow-xl">
               <img
-                src={loginHero} // add this to /public
+                src={loginHero} 
                 alt="Citizens improving city infrastructure"
                 className="h-full w-full object-cover"
               />
