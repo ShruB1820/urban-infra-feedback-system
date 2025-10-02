@@ -10,3 +10,5 @@ router.get('/issues1', ctrl.getAllIssues1);
 router.patch('/issues1/:id/status', ctrl.updateStatus1);
 
 module.exports = router;
+
+// changes made
