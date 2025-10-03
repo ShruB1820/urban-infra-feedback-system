@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import API from "../axiosConfig";
 import { Link } from "react-router-dom";
 
-// Map backend enums → labels & chip styles
 const TYPE_LABEL = {
   POTHOLE: "Pothole",
   STREETLIGHT: "Street Lights",
@@ -34,14 +33,13 @@ export default function MyReports() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
   const [items, setItems] = useState([]);
-  const [tab, setTab] = useState("all");         // "all" | "closed"
-  const [sort, setSort] = useState("new");       // "new" | "old"
+  const [tab, setTab] = useState("all");       
+  const [sort, setSort] = useState("new");       
 
   useEffect(() => {
     (async () => {
       try {
         setLoading(true); setErr("");
-        // Your backend’s GET /api/issues (with auth) returns current user's issues
         const res = await API.get("/issues");
         setItems(Array.isArray(res.data) ? res.data : (res.data?.data || []));
       } catch (e) {
