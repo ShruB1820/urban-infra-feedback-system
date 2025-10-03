@@ -1,9 +1,7 @@
-// frontend/src/pages/ReportIssue.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../axiosConfig";
 
-// exactly the backend enums; label is just for display
 const CATEGORIES = [
   { label: "Pothole", value: "POTHOLE" },
   { label: "Street Lights", value: "STREETLIGHT" },
@@ -15,7 +13,7 @@ export default function ReportIssue() {
   const fileInputRef = useRef(null);
 
   const [form, setForm] = useState({
-    type: "",           // <-- enum value stored here
+    type: "",           
     title: "",
     priority: 3,
     description: "",
@@ -26,7 +24,7 @@ export default function ReportIssue() {
     agree: false,
   });
 
-  const [images, setImages] = useState([]); // UI can hold up to 4 previews (we upload only the first)
+  const [images, setImages] = useState([]); 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -74,21 +72,18 @@ export default function ReportIssue() {
     try {
       const fd = new FormData();
 
-      // backend expects 'type' (enum), not 'category'
       fd.append("type", form.type);
 
-      // fall back title to the selected label
       const label = CATEGORIES.find((c) => c.value === form.type)?.label || "Issue";
       fd.append("title", form.title || label);
 
-      fd.append("priority", String(form.priority)); // ok if backend ignores it
+      fd.append("priority", String(form.priority)); 
       fd.append("description", form.description);
       fd.append("address", form.address);
       if (form.lat) fd.append("lat", String(form.lat));
       if (form.lng) fd.append("lng", String(form.lng));
       fd.append("anonymous", String(form.anonymous));
 
-      // backend uses upload.single('photo') → send only the first image as 'photo'
       if (images[0]) {
         fd.append("photo", images[0], images[0].name || "photo.jpg");
       }
