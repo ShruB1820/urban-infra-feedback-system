@@ -1,0 +1,2025 @@
+{
+	"info": {
+		"_postman_id": "45386968-7a67-4527-bafb-51cdf0cb47a9",
+		"name": "Tejasvi Issue Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17543132"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tejasvi\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1998\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success Register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tejasvi\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1998\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "316"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13c-8rShkA9BXrUGiZdR1Ty/+gal7+U\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:17:38 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"name\": \"Tejasvi\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"role\": \"user\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwMjU4LCJleHAiOjE3NjIwODIyNTh9.3wZOowvu88DmwmXYB6cW0EBq3OurCX0oL91cc6sBqlk\"\n}"
+				},
+				{
+					"name": "User already exists",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tejasvi 1\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi1@1998\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "33"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"21-iGErLku/9taeeOQN+9qwFgLXnuo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:18:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User already exists\"\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\",\n    \"email\": \"\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "142"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"8e-88NU2DVg7IlEdozMdjv/P3hNABM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:18:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User validation failed: name: Path `name` is required., email: Path `email` is required., password: Path `password` is required.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1998\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Wrong username",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tejasvivasant.mosamkar1@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1998\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-Mm37A2ls1bgL0/D8e3MSpDLbow8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:20:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid email or password\"\n}"
+				},
+				{
+					"name": "Wrong Password",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1999\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-Mm37A2ls1bgL0/D8e3MSpDLbow8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:20:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Invalid email or password\"\n}"
+				},
+				{
+					"name": "Success Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"password\": \"Tejasvi@1998\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "316"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"13c-lQ9b5LqFeUK9pckUeMev6lEURpc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:21:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"name\": \"Tejasvi\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"role\": \"user\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Profile fetch",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/auth/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success profile fetch",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "84"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"54-1sKbjs1K20tx3wnMo8Zj0Q95KTQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:22:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Tejasvi\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"role\": \"user\"\n}"
+				},
+				{
+					"name": "Wrong token",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2a-Srzaw01J1MSkTStpZumRIHJGaRs\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:22:47 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Not authorized, token failed\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Profile update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Tejasvi Mosamkar\",\n    \"university\": \"QUT\",\n    \"address\": \"Gardens Point\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/auth/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Tejasvi Mosamkar\",\n    \"university\": \"QUT\",\n    \"address\": \"Gardens Point\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "370"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"172-UMo2H02Icd+dYNZOGOT5yKWKVsY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:24:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"name\": \"Tejasvi Mosamkar\",\n    \"email\": \"tejasvivasant.mosamkar@connect.qut.edu.au\",\n    \"university\": \"QUT\",\n    \"address\": \"Gardens Point\",\n    \"role\": \"user\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNjc0LCJleHAiOjE3NjIwODI2NzR9.D3JvxsGTosDTe8lt1S2gIwcBRrlH8lHoLT1zMffp7IA\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Issue list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1795"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"703-Nm5cSpKR/FYnQC1DbRz2w2zBbf0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:26:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df416dc7a0e4735811b9db\",\n        \"title\": \"fffffff\",\n        \"description\": \"fffffffffffffffffffff\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T03:22:21.807Z\",\n        \"updatedAt\": \"2025-10-03T03:22:21.807Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df2018b1ce19eb9cede2c7\",\n        \"title\": \"Other\",\n        \"description\": \"ggggggggggggggggggg\",\n        \"type\": \"OTHER\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T01:00:08.947Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.482Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1bc7b1ce19eb9cede2c0\",\n        \"title\": \"Street Lights\",\n        \"description\": \"llllllllllllllllllllllll\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"CLOSED\",\n        \"photoUrl\": \"\",\n        \"address\": \"No. 670 Maruthayathu Building, Lower Karickom, Kottarakara, Kollam - 691531\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:43.215Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.063Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1ba1b1ce19eb9cede2b9\",\n        \"title\": \"s\",\n        \"description\": \"ssssssssssssss\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"/uploads/1759452065261-98395959-screenshot-2025-07-24-174940.png\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:05.274Z\",\n        \"updatedAt\": \"2025-10-03T00:41:05.274Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68a0ac8841b4f4321874d173\",\n        \"title\": \"Broken Streetlight\",\n        \"description\": \"Broken streetlight. please fix.\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"Albion\",\n        \"createdBy\": \"68a095787c9732d969821c20\",\n        \"createdAt\": \"2025-08-16T16:06:32.934Z\",\n        \"updatedAt\": \"2025-10-03T03:04:20.629Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create issue",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Issue 3",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Description 3",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "POTHOLE",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "Address 3",
+							"type": "text"
+						},
+						{
+							"key": "lat",
+							"value": "40.730610",
+							"type": "text"
+						},
+						{
+							"key": "lng",
+							"value": "-73.935242",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Issue 3",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description 3",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "POTHOLE",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Address 3",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "40.730610",
+									"type": "text"
+								},
+								{
+									"key": "lng",
+									"value": "-73.935242",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "340"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"154-CGAaA7QVMc8s/JBKpSI9Pp/GE5s\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:44:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"title\": \"Issue 3\",\n    \"description\": \"Description 3\",\n    \"type\": \"POTHOLE\",\n    \"status\": \"OPEN\",\n    \"photoUrl\": \"\",\n    \"address\": \"Address 3\",\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -73.935242,\n            40.73061\n        ]\n    },\n    \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"_id\": \"68dfb701f88fee5c9d0fe402\",\n    \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n    \"updatedAt\": \"2025-10-03T11:44:01.555Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Invalid request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description 3",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Address 3",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "40.730610",
+									"type": "text"
+								},
+								{
+									"key": "lng",
+									"value": "-73.935242",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "41"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"29-S3F2C7rL4qV1CDwBPURPvASLLxs\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:44:15 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"title and type are required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Issue detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe4021",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues",
+						"68dfb701f88fee5c9d0fe4021"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe402"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "340"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"154-ptjaOaZldMPVrVIik2TdHB+3sRc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:45:02 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -73.935242,\n            40.73061\n        ]\n    },\n    \"_id\": \"68dfb701f88fee5c9d0fe402\",\n    \"title\": \"Issue 3\",\n    \"description\": \"Description 3\",\n    \"type\": \"POTHOLE\",\n    \"status\": \"OPEN\",\n    \"photoUrl\": \"\",\n    \"address\": \"Address 3\",\n    \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n    \"updatedAt\": \"2025-10-03T11:44:01.555Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe4021",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe4021"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "127"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7f-VAJ9Ars6ZMCnxzSA0zh1RtLxTbI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:45:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Cast to ObjectId failed for value \\\"68dfb701f88fee5c9d0fe4021\\\" (type string) at path \\\"_id\\\" for model \\\"Issue\\\"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"RESOLVED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402/status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues",
+						"68dfb701f88fee5c9d0fe402",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"RESOLVED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe4021/status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe4021",
+								"status"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "127"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7f-VAJ9Ars6ZMCnxzSA0zh1RtLxTbI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:47:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Cast to ObjectId failed for value \\\"68dfb701f88fee5c9d0fe4021\\\" (type string) at path \\\"_id\\\" for model \\\"Issue\\\"\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"RESOLVED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402/status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe402",
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "344"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"158-+c0kAZDcDcyL3VEFBcgU7U4ciAk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:47:31 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -73.935242,\n            40.73061\n        ]\n    },\n    \"_id\": \"68dfb701f88fee5c9d0fe402\",\n    \"title\": \"Issue 3\",\n    \"description\": \"Description 3\",\n    \"type\": \"POTHOLE\",\n    \"status\": \"RESOLVED\",\n    \"photoUrl\": \"\",\n    \"address\": \"Address 3\",\n    \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n    \"updatedAt\": \"2025-10-03T11:47:31.044Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Admin Issues List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/admin/issues1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"admin",
+						"issues1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/admin/issues1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"admin",
+								"issues1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2817"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b01-ygSTSooCsxwPhoZjQuBFJyF2ZDE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:49:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                -73.935242,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb701f88fee5c9d0fe402\",\n        \"title\": \"Issue 3\",\n        \"description\": \"Description 3\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 3\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n        \"updatedAt\": \"2025-10-03T11:47:31.044Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                -73.935242,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb496454b1c2166100f77\",\n        \"title\": \"Issue 2\",\n        \"description\": \"This is issue 2\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 2\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:33:42.916Z\",\n        \"updatedAt\": \"2025-10-03T11:33:42.916Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb437454b1c2166100f74\",\n        \"title\": \"Issue 1\",\n        \"description\": \"This is issue 1\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 1\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:32:07.076Z\",\n        \"updatedAt\": \"2025-10-03T11:32:07.076Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df416dc7a0e4735811b9db\",\n        \"title\": \"fffffff\",\n        \"description\": \"fffffffffffffffffffff\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T03:22:21.807Z\",\n        \"updatedAt\": \"2025-10-03T03:22:21.807Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df2018b1ce19eb9cede2c7\",\n        \"title\": \"Other\",\n        \"description\": \"ggggggggggggggggggg\",\n        \"type\": \"OTHER\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T01:00:08.947Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.482Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1bc7b1ce19eb9cede2c0\",\n        \"title\": \"Street Lights\",\n        \"description\": \"llllllllllllllllllllllll\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"CLOSED\",\n        \"photoUrl\": \"\",\n        \"address\": \"No. 670 Maruthayathu Building, Lower Karickom, Kottarakara, Kollam - 691531\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:43.215Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.063Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1ba1b1ce19eb9cede2b9\",\n        \"title\": \"s\",\n        \"description\": \"ssssssssssssss\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"/uploads/1759452065261-98395959-screenshot-2025-07-24-174940.png\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:05.274Z\",\n        \"updatedAt\": \"2025-10-03T00:41:05.274Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68a0ac8841b4f4321874d173\",\n        \"title\": \"Broken Streetlight\",\n        \"description\": \"Broken streetlight. please fix.\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"Albion\",\n        \"createdBy\": \"68a095787c9732d969821c20\",\n        \"createdAt\": \"2025-08-16T16:06:32.934Z\",\n        \"updatedAt\": \"2025-10-03T03:04:20.629Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Admin Issue Status update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"status\": \"CLOSED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/admin/issues1/68dfb701f88fee5c9d0fe402/status",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"admin",
+						"issues1",
+						"68dfb701f88fee5c9d0fe402",
+						"status"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fail",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"IN_PROGRESS_\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/admin/issues1/68dfb701f88fee5c9d0fe402/status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"admin",
+								"issues1",
+								"68dfb701f88fee5c9d0fe402",
+								"status"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "106"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6a-ZHCSeb7SWisLFClfWeuvBcOQjN0\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:50:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Issue validation failed: status: `IN_PROGRESS_` is not a valid enum value for path `status`.\"\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"CLOSED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/admin/issues1/68dfb701f88fee5c9d0fe402/status",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"admin",
+								"issues1",
+								"68dfb701f88fee5c9d0fe402",
+								"status"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "342"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"156-6cgWEXSURMHvIS3N4s4mkxojkSk\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:50:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"location\": {\n        \"type\": \"Point\",\n        \"coordinates\": [\n            -73.935242,\n            40.73061\n        ]\n    },\n    \"_id\": \"68dfb701f88fee5c9d0fe402\",\n    \"title\": \"Issue 3\",\n    \"description\": \"Description 3\",\n    \"type\": \"POTHOLE\",\n    \"status\": \"CLOSED\",\n    \"photoUrl\": \"\",\n    \"address\": \"Address 3\",\n    \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n    \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n    \"updatedAt\": \"2025-10-03T11:50:29.897Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Issues list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2815"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"aff-6cMlaWfhJNxF5+7iYr4ZXrL7S6c\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:51:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                -73.935242,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb701f88fee5c9d0fe402\",\n        \"title\": \"Issue 3\",\n        \"description\": \"Description 3\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"CLOSED\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 3\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:44:01.555Z\",\n        \"updatedAt\": \"2025-10-03T11:50:29.897Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                -73.935242,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb496454b1c2166100f77\",\n        \"title\": \"Issue 2\",\n        \"description\": \"This is issue 2\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 2\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:33:42.916Z\",\n        \"updatedAt\": \"2025-10-03T11:33:42.916Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                40.73061\n            ]\n        },\n        \"_id\": \"68dfb437454b1c2166100f74\",\n        \"title\": \"Issue 1\",\n        \"description\": \"This is issue 1\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"Address 1\",\n        \"createdBy\": \"68dfb0d191c7cd71f5a5ccc0\",\n        \"createdAt\": \"2025-10-03T11:32:07.076Z\",\n        \"updatedAt\": \"2025-10-03T11:32:07.076Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df416dc7a0e4735811b9db\",\n        \"title\": \"fffffff\",\n        \"description\": \"fffffffffffffffffffff\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T03:22:21.807Z\",\n        \"updatedAt\": \"2025-10-03T03:22:21.807Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df2018b1ce19eb9cede2c7\",\n        \"title\": \"Other\",\n        \"description\": \"ggggggggggggggggggg\",\n        \"type\": \"OTHER\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T01:00:08.947Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.482Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1bc7b1ce19eb9cede2c0\",\n        \"title\": \"Street Lights\",\n        \"description\": \"llllllllllllllllllllllll\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"CLOSED\",\n        \"photoUrl\": \"\",\n        \"address\": \"No. 670 Maruthayathu Building, Lower Karickom, Kottarakara, Kollam - 691531\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:43.215Z\",\n        \"updatedAt\": \"2025-10-03T03:04:22.063Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68df1ba1b1ce19eb9cede2b9\",\n        \"title\": \"s\",\n        \"description\": \"ssssssssssssss\",\n        \"type\": \"POTHOLE\",\n        \"status\": \"OPEN\",\n        \"photoUrl\": \"/uploads/1759452065261-98395959-screenshot-2025-07-24-174940.png\",\n        \"address\": \"\",\n        \"createdBy\": \"68da1a16a2f21bbeb12f5295\",\n        \"createdAt\": \"2025-10-03T00:41:05.274Z\",\n        \"updatedAt\": \"2025-10-03T00:41:05.274Z\",\n        \"__v\": 0\n    },\n    {\n        \"location\": {\n            \"type\": \"Point\",\n            \"coordinates\": [\n                0,\n                0\n            ]\n        },\n        \"_id\": \"68a0ac8841b4f4321874d173\",\n        \"title\": \"Broken Streetlight\",\n        \"description\": \"Broken streetlight. please fix.\",\n        \"type\": \"STREETLIGHT\",\n        \"status\": \"RESOLVED\",\n        \"photoUrl\": \"\",\n        \"address\": \"Albion\",\n        \"createdBy\": \"68a095787c9732d969821c20\",\n        \"createdAt\": \"2025-08-16T16:06:32.934Z\",\n        \"updatedAt\": \"2025-10-03T03:04:20.629Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete Issue",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZGZiMGQxOTFjN2NkNzFmNWE1Y2NjMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5NDkwNDgwLCJleHAiOjE3NjIwODI0ODB9.DZ03v5yxo3NyBy4NBzLnIWiyV8d_c4EjvvnCaCCgUHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"issues",
+						"68dfb701f88fee5c9d0fe402"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe402"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "11"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b-Ai2R8hgEarLmHKwesT1qcY913ys\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:54:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ok\": true\n}"
+				},
+				{
+					"name": "Fail Already Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5001/api/issues/68dfb701f88fee5c9d0fe402",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"issues",
+								"68dfb701f88fee5c9d0fe402"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"17-JG2JTE6to/D4sxc2pRx7Kk+opAc\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 03 Oct 2025 11:54:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Not found\"\n}"
+				}
+			]
+		}
+	]
+}
