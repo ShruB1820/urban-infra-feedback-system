@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import API, { setAuthToken } from "../axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import Logo from "../assets/BC_logo.png";
-import LoginHero from "../assets/citizens.png"
+import LoginHero from "../assets/citizens.png";
 
 function Field({ label, id, type = "text", value, onChange, placeholder, error, rightSlot, autoComplete }) {
   return (
@@ -49,12 +49,16 @@ export default function Login() {
       const data = res?.data || {};
       const token = data.token;
       const userObj = data.user || {
-        id: data.id, email: data.email, name: data.name, role: data.role || (form.role === "admin" ? "admin" : "user"),
+        id: data.id,
+        email: data.email,
+        name: data.name,
+        role: data.role,        
       };
       if (!token) throw new Error("No token received from server.");
       setAuthToken(token);
       login({ ...userObj, token });
-      navigate("/home", { replace: true });
+
+      navigate(userObj?.role === "admin" ? "/admin" : "/home", { replace: true });
     } catch (e2) {
       setErr(e2?.response?.data?.message || e2.message || "Login failed. Try again.");
     } finally {
@@ -69,7 +73,6 @@ export default function Login() {
       [background-image:radial-gradient(40rem_20rem_at_-10%_-10%,rgba(79,70,229,0.08),transparent),
                         radial-gradient(35rem_18rem_at_110%_10%,rgba(14,165,233,0.08),transparent)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        {/* header (logo only) */}
         <div className="flex items-center justify-start">
           <div className="flex items-center gap-3">
             <img src={Logo} alt="Brisbane Connect" className="h-12 w-auto object-contain scale-[1.2] origin-left -ml-1" />
@@ -95,21 +98,6 @@ export default function Login() {
               <h2 className="text-2xl font-semibold text-gray-900">Welcome back</h2>
               <p className="mt-1 text-sm text-gray-600">Log in to report issues and track progress.</p>
 
-              {/* role pills (visual only) */}
-              <div className="mt-5 inline-flex rounded-full bg-gray-100 p-1">
-                {["citizen", "admin"].map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    onClick={() => setForm((s) => ({ ...s, role: r }))}
-                    className={`px-4 py-2 text-sm rounded-full transition
-                      ${form.role === r ? "bg-white shadow text-gray-900" : "text-gray-600 hover:text-gray-900"}`}
-                    aria-pressed={form.role === r}
-                  >
-                    {r === "citizen" ? "Citizen" : "Admin"}
-                  </button>
-                ))}
-              </div>
 
               <form onSubmit={onSubmit} noValidate className="mt-5 space-y-5">
                 <Field

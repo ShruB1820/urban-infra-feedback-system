@@ -1,4 +1,6 @@
+// src/App.js
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import AdminPanel from "./pages/AdminPanel";
 import { useAuth } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
 
@@ -6,30 +8,52 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import ReportIssue from "./pages/ReportIssue"; 
+import ReportIssue from "./pages/ReportIssue";
 import Profile from "./pages/Profile";
 import MyReports from "./pages/MyReports";
-import AdminPanel from "./pages/AdminPanel";
 
 export default function App() {
   const { user } = useAuth();
+  const isAdmin = !!user && String(user.role).toLowerCase() === "admin";
 
   return (
     <Router>
       {user && <Navbar />}
 
       <Routes>
-        <Route path="/" element={user ? <Navigate to="/home" /> : <Navigate to="/login" />} />
+        {/* root -> go by role */}
+        <Route
+          path="/"
+          element={
+            user
+              ? <Navigate to={isAdmin ? "/admin" : "/home"} replace />
+              : <Navigate to="/login" replace />
+          }
+        />
 
-        <Route path="/login" element={!user ? <Login /> : <Navigate to="/home" />} />
-        <Route path="/register" element={!user ? <Register /> : <Navigate to="/home" />} />
+        {/* admin route (guarded) */}
+        <Route
+          path="/admin"
+          element={isAdmin ? <AdminPanel /> : <Navigate to="/home" replace />}
+        />
 
-        <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
-        <Route path="/report" element={user ? <ReportIssue /> : <Navigate to="/login" />} />
-        <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
-        <Route path="/reports" element={user ? <MyReports /> : <Navigate to="/login" />} />
-        <Route path="/admin" element={user ? <AdminPanel /> : <Navigate to="/login" />} />
+        {/* auth routes */}
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to={isAdmin ? "/admin" : "/home"} replace />}
+        />
+        <Route
+          path="/register"
+          element={!user ? <Register /> : <Navigate to={isAdmin ? "/admin" : "/home"} replace />}
+        />
 
+        {/* app routes */}
+        <Route path="/home" element={user ? <Home /> : <Navigate to="/login" replace />} />
+        <Route path="/report" element={user ? <ReportIssue /> : <Navigate to="/login" replace />} />
+        <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" replace />} />
+        <Route path="/reports" element={user ? <MyReports /> : <Navigate to="/login" replace />} />
+
+        {/* legacy alias */}
         <Route path="/tasks" element={<Navigate to="/report" replace />} />
       </Routes>
     </Router>

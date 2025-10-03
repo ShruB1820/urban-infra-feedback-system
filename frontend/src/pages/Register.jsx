@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import API, { setAuthToken } from "../axiosConfig";
 import { useAuth } from "../context/AuthContext";
 import Logo from "../assets/BC_logo.png";
+import RegisterHero from "../assets/register.png"
 
 function Field({ label, id, type = "text", value, onChange, placeholder, error, rightSlot, autoComplete }) {
   return (
@@ -21,16 +22,6 @@ function Field({ label, id, type = "text", value, onChange, placeholder, error, 
       {error && <p id={`${id}-error`} className="text-xs text-red-600">{error}</p>}
     </div>
   );
-}
-
-function strength(pw) {
-  if (!pw) return 0;
-  let s = 0;
-  if (pw.length >= 6) s++;
-  if (/[0-9]/.test(pw)) s++;
-  if (/[A-Z]/.test(pw)) s++;
-  if (/[^A-Za-z0-9]/.test(pw)) s++;
-  return Math.min(s, 3);
 }
 
 export default function Register() {
@@ -77,8 +68,6 @@ export default function Register() {
   };
 
   useEffect(() => { document.getElementById("name")?.focus(); }, []);
-  const pwStrength = strength(form.password);
-  const bars = ["bg-red-400","bg-amber-400","bg-green-500"];
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-sky-50
@@ -89,7 +78,6 @@ export default function Register() {
         <div className="flex items-center justify-start">
           <div className="flex items-center gap-3">
             <img src={Logo} alt="Brisbane Connect" className="h-12 w-auto object-contain scale-[1.2] origin-left -ml-1" />
-            <span className="hidden sm:block text-xl font-semibold text-gray-900">Brisbane Connect</span>
           </div>
         </div>
 
@@ -97,7 +85,7 @@ export default function Register() {
           {/* Left hero */}
           <section className="lg:col-span-3">
             <div className="relative overflow-hidden rounded-3xl shadow-xl">
-              <img src="/login-hero.jpg" alt="Community improving city infrastructure" className="h-full w-full object-cover" />
+              <img src={RegisterHero} alt="Community improving city infrastructure" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-transparent" />
               <div className="absolute left-0 right-0 bottom-0 p-6 sm:p-8">
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-white drop-shadow">Join Brisbane Connect</h1>
@@ -124,13 +112,6 @@ export default function Register() {
                       className="rounded-md px-2 text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                       aria-label={form.showPw ? "Hide password" : "Show password"}>{form.showPw ? "🙈" : "👁️"}</button>
                   } />
-
-                {/* strength meter */}
-                <div aria-hidden className="mt-1 flex gap-2">
-                  {[0,1,2].map((i) => (
-                    <div key={i} className={`h-1.5 w-1/3 rounded-full ${pwStrength > i-1 ? bars[Math.min(pwStrength-1,2)] : "bg-gray-200"}`} />
-                  ))}
-                </div>
 
                 <Field label="Confirm password" id="confirm" type={form.showPw2 ? "text" : "password"} value={form.confirm}
                   onChange={(e) => setForm((s) => ({ ...s, confirm: e.target.value }))} placeholder="Repeat your password" error={matchErr} autoComplete="new-password"
