@@ -35,7 +35,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/report" className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-5 py-3 text-white font-medium hover:bg-indigo-700">Report an Issue</Link>
-              <Link to="/profile" className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-indigo-700 font-medium border border-indigo-200 hover:bg-indigo-50">View My Reports</Link>
+              <Link to="/reports" className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 text-indigo-700 font-medium border border-indigo-200 hover:bg-indigo-50">View My Reports</Link>
             </div>
 
             <dl className="mt-10 grid grid-cols-3 gap-6">
