@@ -1,16 +1,13 @@
+// frontend/src/pages/ReportIssue.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../axiosConfig";
 
+// exactly the backend enums; label is just for display
 const CATEGORIES = [
-  "Pothole",
-  "Broken streetlight",
-  "Damaged sidewalk",
-  "Waste / Garbage",
-  "Water leak",
-  "Graffiti",
-  "Road sign",
-  "Other",
+  { label: "Pothole", value: "POTHOLE" },
+  { label: "Street Lights", value: "STREETLIGHT" },
+  { label: "Other", value: "OTHER" },
 ];
 
 export default function ReportIssue() {
@@ -18,9 +15,9 @@ export default function ReportIssue() {
   const fileInputRef = useRef(null);
 
   const [form, setForm] = useState({
+    type: "",           // <-- enum value stored here
     title: "",
-    category: "",
-    priority: 3,            // 1–5
+    priority: 3,
     description: "",
     address: "",
     lat: "",
@@ -29,17 +26,13 @@ export default function ReportIssue() {
     agree: false,
   });
 
-  const [images, setImages] = useState([]); // File[]
+  const [images, setImages] = useState([]); // UI can hold up to 4 previews (we upload only the first)
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   const isValid = useMemo(() => {
-    return (
-      form.category &&
-      form.description.trim().length >= 10 &&
-      form.agree
-    );
+    return form.type && form.description.trim().length >= 10 && form.agree;
   }, [form]);
 
   const pickLocation = () => {
@@ -62,7 +55,6 @@ export default function ReportIssue() {
   const onFiles = (files) => {
     const arr = Array.from(files || []);
     if (!arr.length) return;
-    // limit: 4 photos, jpeg/png only, < 8MB each
     const filtered = arr
       .slice(0, 4 - images.length)
       .filter((f) => /image\/(jpeg|png)/.test(f.type) && f.size <= 8 * 1024 * 1024);
@@ -81,29 +73,32 @@ export default function ReportIssue() {
 
     try {
       const fd = new FormData();
-      fd.append("title", form.title || form.category); // fall back to category
-      fd.append("category", form.category);
-      fd.append("priority", String(form.priority));
+
+      // backend expects 'type' (enum), not 'category'
+      fd.append("type", form.type);
+
+      // fall back title to the selected label
+      const label = CATEGORIES.find((c) => c.value === form.type)?.label || "Issue";
+      fd.append("title", form.title || label);
+
+      fd.append("priority", String(form.priority)); // ok if backend ignores it
       fd.append("description", form.description);
       fd.append("address", form.address);
-      if (form.lat) fd.append("lat", form.lat);
-      if (form.lng) fd.append("lng", form.lng);
+      if (form.lat) fd.append("lat", String(form.lat));
+      if (form.lng) fd.append("lng", String(form.lng));
       fd.append("anonymous", String(form.anonymous));
 
-      images.forEach((file, i) => fd.append("photos", file, file.name || `photo-${i}.jpg`));
+      // backend uses upload.single('photo') → send only the first image as 'photo'
+      if (images[0]) {
+        fd.append("photo", images[0], images[0].name || "photo.jpg");
+      }
 
-      // 🔗 adjust endpoint name to your backend:
-      // e.g. "/issues" or "/reports" or "/tasks"
-      const res = await API.post("/issues", fd, {
+      await API.post("/issues", fd, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
       setSuccess("Issue submitted successfully.");
-      // Optional: use returned id
-      // const created = res.data;
-
-      // small pause then redirect
-      setTimeout(() => navigate("/profile"), 600);
+      setTimeout(() => navigate("/reports"), 600);
     } catch (err) {
       setError(err?.response?.data?.message || err.message || "Failed to submit.");
     } finally {
@@ -112,8 +107,7 @@ export default function ReportIssue() {
   };
 
   useEffect(() => {
-    // focus the first field
-    document.getElementById("category")?.focus();
+    document.getElementById("type")?.focus();
   }, []);
 
   return (
@@ -126,19 +120,19 @@ export default function ReportIssue() {
           {/* LEFT: form */}
           <div className="lg:col-span-2 space-y-5">
             <div>
-              <label className="block text-sm font-medium text-gray-800" htmlFor="category">
+              <label className="block text-sm font-medium text-gray-800" htmlFor="type">
                 Category *
               </label>
               <select
-                id="category"
+                id="type"
                 className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-200"
-                value={form.category}
-                onChange={(e) => setForm((s) => ({ ...s, category: e.target.value }))}
+                value={form.type}
+                onChange={(e) => setForm((s) => ({ ...s, type: e.target.value }))}
                 required
               >
                 <option value="">Select a category</option>
                 {CATEGORIES.map((c) => (
-                  <option key={c} value={c}>{c}</option>
+                  <option key={c.value} value={c.value}>{c.label}</option>
                 ))}
               </select>
             </div>
@@ -162,7 +156,9 @@ export default function ReportIssue() {
                 <label className="block text-sm font-medium text-gray-800" htmlFor="description">
                   Description *
                 </label>
-                <span className="text-xs text-gray-500">{Math.max(0, 500 - form.description.length)} left</span>
+                <span className="text-xs text-gray-500">
+                  {Math.max(0, 500 - form.description.length)} left
+                </span>
               </div>
               <textarea
                 id="description"
@@ -181,7 +177,9 @@ export default function ReportIssue() {
 
             {/* photos */}
             <div>
-              <label className="block text-sm font-medium text-gray-800">Photos (up to 4)</label>
+              <label className="block text-sm font-medium text-gray-800">
+                Photos (only the first will be uploaded)
+              </label>
               <div
                 onClick={() => fileInputRef.current?.click()}
                 className="mt-1 grid gap-3 sm:grid-cols-4 rounded-xl border border-dashed border-gray-300 bg-white p-4 cursor-pointer hover:border-indigo-300"

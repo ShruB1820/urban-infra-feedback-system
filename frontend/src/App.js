@@ -6,8 +6,9 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import ReportIssue from "./pages/ReportIssue"; // << renamed, new
+import ReportIssue from "./pages/ReportIssue"; 
 import Profile from "./pages/Profile";
+import MyReports from "./pages/MyReports";
 import AdminPanel from "./pages/AdminPanel";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/home" element={user ? <Home /> : <Navigate to="/login" />} />
         <Route path="/report" element={user ? <ReportIssue /> : <Navigate to="/login" />} />
         <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
+        <Route path="/reports" element={user ? <MyReports /> : <Navigate to="/login" />} />
         <Route path="/admin" element={user ? <AdminPanel /> : <Navigate to="/login" />} />
 
         <Route path="/tasks" element={<Navigate to="/report" replace />} />
